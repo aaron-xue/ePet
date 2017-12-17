@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <script>
+    var targateW = 375;
+    var scale = document.documentElement.clientWidth / targateW;
+    var metaNode = document.querySelector('meta[name=viewport]');
+    metaNode.setAttribute('content', 'initial-scale=' + scale + ',user-scalable=no');
+  </script>
+  <title>epet</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
