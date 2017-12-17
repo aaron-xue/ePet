@@ -1,18 +1,16 @@
 <template>
     <div class="classify">
-        <x-header :left-options="{showBack: false}">
-            <header class="clearfix rela top bgfff">
-                <tabbar>
-                    <tabbar-item selected link="/classify/classify_i">
-                        <span slot="label">分类</span>
-                    </tabbar-item>
-                    <tabbar-item link="/classify/brand">
-                        <span slot="label">品牌</span>
-                    </tabbar-item>
-                </tabbar>
-                <a href="javascript:;" class="search"><img src="../main/img/search.png"></a>
-            </header>
-        </x-header>
+        <div class="classify_h">
+            <tabbar>
+                <tabbar-item selected link="/classify/classify_i">
+                    <span slot="label">分类</span>
+                </tabbar-item>
+                <tabbar-item link="/classify/brand">
+                    <span slot="label">品牌</span>
+                </tabbar-item>
+            </tabbar>
+            <a href="javascript:;" class="search"><img src="../main/img/search.png"></a>
+        </div>
         <router-view/>
     </div>
 </template>
@@ -28,17 +26,16 @@ export default {
 }
 </script>
 <style lang="less">
-div.vux-header {
+.classify_h {
   background-color: #fff;
-  padding: 0;
   position: absolute;
-  z-index: 99;
-  .vux-header-left,
-  .vux-header-right {
-    display: none;
-  }
+  z-index: 10;
+  height: 51px;
+  width: 100%;
   .weui-tabbar {
+    margin-left: 10%;
     background-color: #fff;
+    width: 80%;
     .weui-tabbar__label {
       line-height: 51px;
       span {
@@ -46,14 +43,15 @@ div.vux-header {
       }
     }
   }
-  .search{
-      position: absolute;
-      z-index: 2;
-      right: -175px;
-      img{
-          width: 14px;
-          height: 14px;
-      }
+}
+.search {
+  position: absolute;
+  z-index: 11;
+  right: 20px;
+  top: 20px;
+  img {
+    width: 14px;
+    height: 14px;
   }
 }
 </style>

@@ -38,6 +38,10 @@ export default {
 </script>
 
 <style lang="less" rel="stylesheet/less">
+#app{
+  width: 100%;
+  height: 100%;
+}
 .weui-bar__item_on{
   span{
     color: #00A6E2;

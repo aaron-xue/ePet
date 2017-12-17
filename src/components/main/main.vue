@@ -272,6 +272,7 @@ div.vux-slider {
   }
   img {
     width: 100%;
+    height: 70px;
   }
 }
 .surprise {
