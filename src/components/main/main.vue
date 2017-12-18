@@ -93,19 +93,27 @@
       </div>
 
     </scroller>
-
+    <div type="dog" class="go-dog" @click="show_pop"></div>
+    <main_pop/>
   </div>
 </template>
 
 <script>
 import { XHeader,Scroller,Swiper,SwiperItem,Grid,GridItem} from 'vux'
+import main_pop from "./main_pop";
 import axios from 'axios'
 import Vue from "vue";
+var pop;
 export default {
 
   data () {
     return {
       msg:{}
+    }
+  },
+  methods:{
+    show_pop(){
+      pop.style.transform = 'scale(1,1)';
     }
   },
   components: {
@@ -114,11 +122,13 @@ export default {
     Swiper,
     SwiperItem,
     GridItem,
-    Grid
+    Grid,
+    main_pop
   },
   beforeCreate(){
     },
   mounted(){
+    pop = window.document.querySelector('.main_pop');
     axios.get('/api/main').then((response) => {
       this.msg = response.data
       this.$nextTick(() => {
@@ -342,4 +352,17 @@ div.vux-slider {
     }
   }
 }
+.go-dog {
+  position: absolute;
+  right: 0;
+  bottom: 100px;
+  width: 41px;
+  height: 46px;
+  background: url("./img/godog.png") no-repeat;
+  background-size: 80px auto;
+  z-index: 10;
+  -webkit-animation: nnh 2.5s steps(2) infinite;
+  animation: nnh 2.5s steps(2) infinite;
+}
+
 </style>

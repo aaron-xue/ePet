@@ -14,36 +14,82 @@
                 </tab-item>
             </tab>
         </div>
-        <div class="login_form">
-            <group label-width="333px" label-align="left">
-                <x-input title="title" v-model="value" type='text'></x-input>
-                <x-input title="title" v-model="value" type='password'></x-input>
+        <div class="login_form form" style='display:block;'>
+            <group label-align="left">
+                <x-input type='text' placeholder="手机号/邮箱/用户名">
+                    <img slot="label" style="padding-right:10px;display:block;" src="./img/ico3.png" width="24" height="24">
+                </x-input>
+                <x-input type='password' placeholder="输入密码">
+                    <img slot="label" style="padding-right:10px;display:block;" src="./img/ico4.png" width="24" height="24">
+                </x-input>
             </group>
-
+        </div>
+        <div class="loginByPhone_form form">
+            <group label-align="left">
+                <x-input type='tel' placeholder="已注册的手机号">
+                    <img slot="label" style="padding-right:10px;display:block;" src="./img/ico1.png" width="24" height="24">
+                </x-input>
+                <x-input class="weui-cell_vcode" placeholder="请输入图片内容">
+                    <img slot="label" style="padding-right:10px;display:block;" src="./img/ico3.png" width="24" height="24">
+                    <img slot="right" class="weui-vcode-img" src="https://wap.epet.com/share/seccode.html?hash=0.39891681107821575&height=30&width=85" @click="changeVcode">
+                </x-input>
+                <x-input placeholder="动态密码" class="weui-vcode">
+                    <img slot="label" style="padding-right:10px;display:block;" src="./img/ico4.png" width="24" height="24">
+                    <x-button slot="right" type="primary" mini>获取动态密码</x-button>
+                </x-input>
+            </group>
+        </div>
+        <div class="ftc">
+            <a href="javascript:;" class="btn-register">忘记密码？</a>
+            <div class="clear"></div>
+        </div>
+        <div style="padding:10px 20px 0 20px;">
+            <x-button slot="right" type="primary" class="login_bt">登录</x-button>
+        </div>
+        <div class="other-login">
+            <p>
+                <b>合作网站登录</b>
+            </p>
+            <ul class="uList1">
+                <li>
+                    <a href="javascript:;"><img src="./img/login_ico2.png"></a>
+                </li>
+                <li>
+                    <a href="javascript:;"><img src="./img/login_ico4.png"></a>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
 <script>
-import { Tab, TabItem,Group,XInput} from 'vux'
-var i;
+import { Tab, TabItem,Group,XInput,XButton} from 'vux'
+var i,form;
 export default {
   components: {
     Tab,
     TabItem,
     Group,
-    XInput 
+    XInput,
+    XButton
+
   },
   methods:{
       onItemClick(index){
-          if (i) {
+          if (i&& form) {
               for (let a = 0; a < i.length; a++) {
                   i[a].style.display = a==index? 'block':'none';
+                  form[a].style.display = a==index? 'block':'none';
               }
           }
+      },
+      changeVcode(ev){
+          console.log( ev.target);
+          ev.target.src=`https://wap.epet.com/share/seccode.html?hash=${Math.random(0,1)}&height=30&width=85`;
       }
   },
   mounted(){
       i = window.document.querySelectorAll('.presonal .vux-tab-item i');
+      form = window.document.querySelectorAll('.presonal .form');
   }
 }
 </script>
@@ -90,8 +136,48 @@ export default {
     }
   }
 }
-.login_form{
-    padding: 0 20px;
+.form {
+  display: none;
+  padding: 0 20px;
+}
+.loginByPhone_form {
+  img.weui-vcode-img {
+    width: 112px;
+    margin-right: 16px;
+  }
+}
+.ftc {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 20px 0px 20px;
+  text-align: right;
+  a {
+    color: #898989;
+  }
+}
+.other-login{
+    width: 100%;
+    height: 114px;
+    position: absolute;
+    bottom: 61px;
+    p{
+        text-align: center;
+    }
+    .uList1{
+        height: 94px;
+        padding: 18px 0;
+        box-sizing: border-box;
+        li{
+            float: left;
+            width: 124.875px;
+            padding: 0 14.4px;
+            box-sizing: border-box;
+            text-align: center;
+            img{
+                width: 57.6563px;
+            }
+        }
+    }
 }
 </style>
 
