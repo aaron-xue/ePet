@@ -19,6 +19,7 @@
 
             </div>
         </scroller>
+        <a href="brand.html" class="all">全部</a>
     </div>
 </template>
 <script>
@@ -69,5 +70,19 @@ export default {
             height: 40px;
         }
     }
+}
+.all{
+    width: 40px;
+    height: 40px;
+    right: 6px;
+    bottom: 65px;
+    position: absolute;
+    z-index: 10;
+    background: rgba(0,0,0,.4);
+    line-height: 40px;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
 }
 </style>
