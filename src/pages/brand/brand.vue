@@ -70,11 +70,19 @@ export default {
         this.msg = response.data
         this.$nextTick(() => {
             this.$refs.scroller.reset();
+             $(".xs-container").css('transition','.3s')
             $("#menu").find("span:first-of-type").addClass("current");
             var that = this;
             $(".l-cell").delegate("span","click", function () {
+                var allHeight = 0;
                 var index = $(".l-cell span").index($(this));
-                window.location.replace(`#item${index}`);
+                for (let i = 0; i < index; i++) {
+                    allHeight+=$(".brand-list .item").eq(i).height()
+                }
+                console.log(allHeight);
+                that.$refs.scroller.reset({
+                    top:allHeight
+                });
                 $(this).siblings().removeClass("current").end().addClass("current");
             });
         }, (response) => {
@@ -164,8 +172,8 @@ body {
         color: #666;
         font-size: 12px;
       }
-      .current{
-          color: red;
+      .current {
+        color: red;
       }
     }
   }
