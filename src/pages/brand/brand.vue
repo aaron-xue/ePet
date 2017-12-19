@@ -72,11 +72,9 @@ export default {
             this.$refs.scroller.reset();
             $("#menu").find("span:first-of-type").addClass("current");
             var that = this;
-            $(".l-cell").on("click","span", function () {
+            $(".l-cell").delegate("span","click", function () {
                 var index = $(".l-cell span").index($(this));
-                that.$refs.scroller.reset({
-                    top: $(".brand-list h2").eq(index).offset().top-40
-                })
+                window.location.replace(`#item${index}`);
                 $(this).siblings().removeClass("current").end().addClass("current");
             });
         }, (response) => {
